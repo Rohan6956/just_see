@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Ritika</title>
+
+  <!-- Fancy Heading Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      background-color: #fff0f5;
+    }
+
+    .page {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .first-page {
+      background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+      display: flex;
+      z-index: 3;
+    }
+
+    .second-page {
+      z-index: 2;
+      display: none;
+    }
+
+    .third-page {
+      background: linear-gradient(to bottom right, #ffdee9, #b5fffc);
+      z-index: 1;
+      display: none;
+    }
+
+    /* Fancy heading */
+    .heading {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8rem;
+      color: #ff4081;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* Fancy button */
+    .watch-button {
+      padding: 15px 40px;
+      font-size: 20px;
+      background: linear-gradient(45deg, #ff4081, #ff80ab);
+      border: none;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255, 64, 129, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+
+    .watch-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 30px rgba(255, 64, 129, 0.6);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    video#bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .text-overlay {
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 20px;
+      width: 90%;
+      line-height: 1.8;
+    }
+
+    .countdown {
+      font-size: 2.5rem;
+      color: #ff4081;
+      margin-bottom: 20px;
+    }
+
+    .gift-message {
+      font-size: 1.5rem;
+      color: #333;
+      text-align: center;
+      display: none;
+      max-width: 90%;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+      .text-overlay { font-size: 1rem; }
+      .countdown { font-size: 2rem; }
+      .gift-message { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div class="page first-page">
+    <h1 class="heading">💕 For Ritika 💕</h1>
+    <button class="watch-button" onclick="showSecondPage()">❤️ Click to Watch ❤️</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="page second-page">
+    <video id="bgVideo" autoplay loop muted playsinline>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+    <audio id="bgMusic" autoplay loop>
+      <source src="song.mp3" type="audio/mp3">
+    </audio>
+    <div class="text-overlay">
+      <p>Talking to you feels like my favorite part of the day (even though 90% of the time we just send random stuff 😅).</p>
+      <p>You always make me smile, even when I’m tired, bored, or pretending to study.</p>
+      <p>And no matter how much I tease you, just know you’re the best thing that happened to me ❤️</p>
+      <p>Sometimes I act chill, but honestly, I get happy over the tiniest message from you 🙈</p>
+      <p>You’re my daily dose of laughter, drama, and care — all in one small packet called Ritika 🤭💌</p>
+      <p>And yep… you’ve officially ruined me for anyone else 😜</p>
+      <p>So keep being you — the crazy, sweet, sarcastic, lovely version I’m totally addicted to 🫶</p>
+      <p>– Rohan 🌸</p>
+    </div>
+    <button class="watch-button" onclick="showThirdPage()">💝 One Last Surprise 💝</button>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="page third-page">
+    <div class="countdown" id="countdown">Unwrapping gift in 5...</div>
+    <div class="gift-message" id="giftMessage">
+      🎁 My biggest gift is YOU, Ritika 💖<br><br>
+      Forever yours,<br>— Rohan 🌸
+    </div>
+  </div>
+
+  <script>
+    function showSecondPage() {
+      document.querySelector('.first-page').style.display = 'none';
+      const secondPage = document.querySelector('.second-page');
+      secondPage.style.display = 'flex';
+
+      const video = document.getElementById('bgVideo');
+      video.muted = false;
+      video.play().catch(() => {});
+
+      const music = document.getElementById('bgMusic');
+      music.play().catch(() => {});
+    }
+
+    function showThirdPage() {
+      document.querySelector('.second-page').style.display = 'none';
+      const thirdPage = document.querySelector('.third-page');
+      thirdPage.style.display = 'flex';
+
+      let seconds = 5;
+      const countdown = document.getElementById("countdown");
+      const gift = document.getElementById("giftMessage");
+
+      const timer = setInterval(() => {
+        seconds--;
+        if (seconds > 0) {
+          countdown.innerText = `Unwrapping gift in ${seconds}...`;
+        } else {
+          clearInterval(timer);
+          countdown.style.display = 'none';
+          gift.style.display = 'block';
+        }
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
